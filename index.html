@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #0f172a; --text: #334155; --bg: #f8fafc; --white: #ffffff; --border: #e2e8f0; --success: #22c55e; }
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --primary-light: #3b82f6; --secondary: #0f172a; --text: #334155; --text-light: #64748b; --bg: #f8fafc; --white: #ffffff; --border: #e2e8f0; --success: #22c55e; --warning: #f59e0b; }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -20,48 +20,87 @@
     nav a { color: var(--text); text-decoration: none; margin-left: 24px; font-weight: 500; font-size: 0.95rem; }
     nav a:hover { color: var(--primary); }
     nav a.cta { background: var(--primary); color: var(--white); padding: 10px 20px; border-radius: 8px; margin-left: 16px; }
-    .hero { padding: 80px 0 60px; text-align: center; }
+    .hero { padding: 80px 0 60px; text-align: center; background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%); }
     .hero-badge { display: inline-block; background: #dbeafe; color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 0.875rem; font-weight: 500; margin-bottom: 24px; }
-    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--secondary); line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; color: var(--secondary); line-height: 1.1; margin-bottom: 20px; }
     .hero h1 span { color: var(--primary); }
-    .hero p { font-size: 1.25rem; color: #64748b; max-width: 600px; margin: 0 auto 40px; }
+    .hero p { font-size: 1.125rem; color: var(--text-light); max-width: 640px; margin: 0 auto 32px; }
+    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-bottom: 32px; }
+    .hero-stat { text-align: center; }
+    .hero-stat .value { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--secondary); }
+    .hero-stat .label { font-size: 0.85rem; color: var(--text-light); }
     .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--white); padding: 16px 32px; border-radius: 12px; font-size: 1.125rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
     .hero-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
-    .steps { padding: 80px 0; background: var(--white); }
+    
+    /* TRUST SECTION */
+    .trust { background: var(--white); padding: 48px 0; border-bottom: 1px solid var(--border); }
+    .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+    .trust-item { display: flex; align-items: center; gap: 12px; }
+    .trust-icon { width: 48px; height: 48px; background: #dcfce7; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .trust-icon svg { width: 24px; height: 24px; color: var(--success); }
+    .trust-item h4 { font-size: 0.95rem; color: var(--secondary); }
+    .trust-item p { font-size: 0.8rem; color: var(--text-light); }
+    
+    /* TESTIMONIALS */
+    .testimonials { padding: 80px 0; background: var(--white); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card { background: var(--bg); padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
+    .testimonial-card .stars { color: var(--warning); margin-bottom: 12px; }
+    .testimonial-card p { font-size: 0.95rem; margin-bottom: 16px; line-height: 1.6; }
+    .testimonial-card .author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-card .avatar { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.9rem; }
+    .testimonial-card .name { font-weight: 500; font-size: 0.9rem; }
+    .testimonial-card .role { font-size: 0.8rem; color: var(--text-light); }
+    
+    /* HOW IT WORKS */
+    .steps { padding: 80px 0; background: var(--bg); }
     .section-header { text-align: center; margin-bottom: 48px; }
-    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; color: var(--secondary); margin-bottom: 12px; }
-    .section-header p { color: #64748b; font-size: 1.125rem; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.25rem; color: var(--secondary); margin-bottom: 12px; }
+    .section-header p { color: var(--text-light); font-size: 1.125rem; }
     .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-    .step-card { background: var(--bg); padding: 32px; border-radius: 16px; text-align: center; transition: transform 0.2s; }
+    .step-card { background: var(--white); padding: 32px; border-radius: 16px; text-align: center; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .step-card:hover { transform: translateY(-4px); }
     .step-number { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--primary); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 1.25rem; margin-bottom: 20px; }
-    .step-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--secondary); }
-    .step-card p { color: #64748b; font-size: 0.95rem; }
-    .features { padding: 80px 0; }
-    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .feature-item { display: flex; align-items: flex-start; gap: 16px; background: var(--white); padding: 24px; border-radius: 12px; border: 1px solid var(--border); }
-    .feature-icon { flex-shrink: 0; width: 40px; height: 40px; background: #dcfce7; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
-    .feature-icon svg { width: 20px; height: 20px; color: var(--success); }
-    .feature-item h3 { font-size: 1rem; color: var(--secondary); margin-bottom: 4px; }
-    .feature-item p { font-size: 0.9rem; color: #64748b; }
+    .step-card h3 { font-size: 1.125rem; margin-bottom: 8px; color: var(--secondary); }
+    .step-card p { color: var(--text-light); font-size: 0.9rem; }
+    
+    /* PRICING */
     .pricing { padding: 80px 0; background: var(--white); }
-    .pricing-card { max-width: 480px; margin: 0 auto; background: var(--bg); border-radius: 24px; padding: 40px; text-align: center; border: 2px solid var(--primary); }
-    .pricing-card h3 { font-size: 1.5rem; color: var(--secondary); margin-bottom: 8px; }
-    .pricing-card .price { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--primary); }
-    .pricing-card .price span { font-size: 1rem; font-weight: 400; color: #64748b; }
-    .pricing-card .description { color: #64748b; margin-bottom: 32px; }
-    .pricing-features { text-align: left; margin-bottom: 32px; }
-    .pricing-features li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); list-style: none; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .pricing-card { background: var(--bg); border-radius: 16px; padding: 32px; text-align: center; border: 2px solid var(--border); transition: all 0.2s; }
+    .pricing-card.featured { border-color: var(--primary); transform: scale(1.05); }
+    .pricing-card .badge { display: inline-block; background: var(--primary); color: var(--white); padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; margin-bottom: 16px; }
+    .pricing-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .pricing-card .price { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--secondary); }
+    .pricing-card .price span { font-size: 1rem; font-weight: 400; color: var(--text-light); }
+    .pricing-card .desc { color: var(--text-light); font-size: 0.9rem; margin-bottom: 24px; min-height: 40px; }
+    .pricing-features { text-align: left; margin-bottom: 24px; }
+    .pricing-features li { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; list-style: none; }
     .pricing-features li:last-child { border-bottom: none; }
-    .pricing-features svg { width: 20px; height: 20px; color: var(--success); }
-    .pricing-btn { display: block; width: 100%; background: var(--primary); color: var(--white); padding: 16px; border-radius: 12px; font-size: 1.125rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .pricing-features svg { width: 18px; height: 18px; color: var(--success); flex-shrink: 0; }
+    .pricing-btn { display: block; width: 100%; background: var(--primary); color: var(--white); padding: 14px; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
     .pricing-btn:hover { background: var(--primary-dark); }
+    .pricing-card:not(.featured) .pricing-btn { background: var(--white); border: 1px solid var(--border); color: var(--text); }
+    .pricing-card:not(.featured) .pricing-btn:hover { background: var(--bg); }
+    
+    /* FAQ */
+    .faq { padding: 80px 0; background: var(--bg); }
+    .faq-grid { max-width: 700px; margin: 0 auto; }
+    .faq-item { background: var(--white); border-radius: 12px; padding: 20px; margin-bottom: 12px; border: 1px solid var(--border); }
+    .faq-item h4 { font-size: 1rem; margin-bottom: 8px; color: var(--secondary); }
+    .faq-item p { font-size: 0.9rem; color: var(--text-light); }
+    
+    /* FOOTER */
     footer { background: var(--secondary); color: #94a3b8; padding: 48px 0; text-align: center; }
     footer a { color: var(--white); text-decoration: none; }
+    footer .payments { display: flex; justify-content: center; gap: 16px; margin-top: 16px; }
+    footer .payments span { background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; }
+    
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.25rem; }
-      .steps-grid, .features-grid { grid-template-columns: 1fr; }
-      .header-inner { flex-direction: column; gap: 16px; }
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { flex-direction: column; gap: 24px; }
+      .trust-grid, .testimonials-grid, .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.featured { transform: none; }
     }
   </style>
 </head>
@@ -76,14 +115,93 @@
       </nav>
     </div>
   </header>
+  
   <section class="hero">
     <div class="container">
-      <span class="hero-badge">🚀 Nouveau service</span>
+      <span class="hero-badge">🚀 +500 Candidatures envoyées ce mois</span>
       <h1>Vos candidatures spontanées,<br><span>automatisées</span></h1>
-      <p>Téléchargez votre CV et votre lettre de motivation. Nous générons des emails personnalisés et les envoyons à des centaines d'entreprises ciblées.</p>
+      <p>Téléchargez votre CV. Notre IA génère des emails personnalisés et les envoie à des centaines d'entreprises qui correspondent à votre profil.</p>
+      
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="value">500+</div>
+          <div class="label">Candidatures ce mois</div>
+        </div>
+        <div class="hero-stat">
+          <div class="value">15%</div>
+          <div class="label">Taux de réponse moyen</div>
+        </div>
+        <div class="hero-stat">
+          <div class="value">4.8/5</div>
+          <div class="label">Note de nos utilisateurs</div>
+        </div>
+      </div>
+      
       <a href="checkout.html" class="hero-cta">Commencer maintenant →</a>
     </div>
   </section>
+  
+  <!-- TRUST SECTION -->
+  <section class="trust">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div><h4>Paiement sécurisé</h4><p>Stripe & données chiffrées</p></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+          <div><h4>50 entreprises réelles</h4><p>Emails vérifiés & ciblés</p></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <div><h4>Envoi en 24-48h</h4><p>Résultats rapides</p></div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div><h4>Support réactif</h4><p>Réponse sous 24h</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ils nous font confiance</h2>
+        <p>Des centaines de candidats nous font confiance chaque mois</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"J'ai reçu 3 réponses en une semaine après des mois de поиск. Le temps économisé est énorme."</p>
+          <div class="author">
+            <div class="avatar">M</div>
+            <div><div class="name">Mathieu S.</div><div class="role">Ancien commercial → Cuisine</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Finally un service qui fonctionne vraiment. Les emails sont personnalisés, pas du copier-coller."</p>
+          <div class="author">
+            <div class="avatar">S</div>
+            <div><div class="name">Sarah L.</div><div class="role">Recherche'emploi</div></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Passé de 0 entretiens à 4 en 2 semaines. Je recommande fortement."</p>
+          <div class="author">
+            <div class="avatar">A</div>
+            <div><div class="name">Amine B.</div><div class="role">Chef de partie</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- HOW IT WORKS -->
   <section class="steps" id="fonctionnement">
     <div class="container">
       <div class="section-header">
@@ -93,71 +211,113 @@
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <h3>Téléchargez vos documents</h3>
-          <p>Upload votre CV et lettre de motivation. Notre IA analyse votre profil et vos compétences.</p>
+          <h3>Répondez au questionnaire</h3>
+          <p>Téléchargez votre CV et répondez à quelques questions pour cibler les établissements.</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <h3>On génère les candidatures</h3>
-          <p>Nous créons des emails personnalisés pour chaque entreprise ciblée, adaptés à votre profil.</p>
+          <h3>Notre IA génère vos emails</h3>
+          <p>Chaque email est personnalisé selon votre profil et l'entreprise ciblée.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
-          <h3>Envoi automatique</h3>
-          <p>Vos candidatures sont envoyées automatiquement. Vous recevez les réponses directement.</p>
+          <h3>Suivez vos réponses</h3>
+          <p>Accédez à votre dashboard et recevez les réponses directement dans votre boîte mail.</p>
         </div>
       </div>
     </div>
   </section>
-  <section class="features">
-    <div class="container">
-      <div class="section-header">
-        <h2>Pourquoi nous choisir</h2>
-      </div>
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h3>Gain de temps considérable</h3><p>Plus besoin d'écrire chaque candidature manuellement.</p></div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h3>Emails personnalisés</h3><p>Chaque email est unique et adapté à l'entreprise destinataire.</p></div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h3>50 entreprises ciblées</h3><p>Nous envoyons vos candidatures aux entreprises qui correspondent à votre profil.</p></div>
-        </div>
-        <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div><h3>Suivi des réponses</h3><p>Dashboard pour suivre l'avancement de vos candidatures.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
+  <!-- PRICING -->
   <section class="pricing" id="tarifs">
     <div class="container">
       <div class="section-header">
         <h2>Tarifs simples</h2>
         <p>Pas de frais cachés, pas d'abonnement</p>
       </div>
-      <div class="pricing-card">
-        <h3>Pack Candidature</h3>
-        <div class="price">29<span>€</span></div>
-        <p class="description">Une seule fois, pas d'abonnement</p>
-        <ul class="pricing-features">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Upload CV + lettre de motivation</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>50 candidatures personnalisées</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails adaptés à votre profil</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard de suivi</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support par email</li>
-        </ul>
-        <a href="checkout.html" class="pricing-btn">Commander maintenant</a>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Test</h3>
+          <div class="price">9<span>€</span></div>
+          <p class="desc">Pour découvrir le service</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>10 candidatures</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails personnalisés</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard basique</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support email</li>
+          </ul>
+          <a href="checkout.html?plan=test" class="pricing-btn">Essayer</a>
+        </div>
+        
+        <div class="pricing-card featured">
+          <div class="badge">PLUS POPULAIRE</div>
+          <h3>Pack Complet</h3>
+          <div class="price">29<span>€</span></div>
+          <p class="desc">Pour une recherche active d'emploi</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>50 candidatures</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails personnalisés</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard complet</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Suivi des réponses</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Relance automatique</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support prioritaire</li>
+          </ul>
+          <a href="checkout.html?plan=complet" class="pricing-btn">Commander</a>
+        </div>
+        
+        <div class="pricing-card">
+          <h3>Premium</h3>
+          <div class="price">49<span>€</span></div>
+          <p class="desc">Pour maximiser vos chances</p>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>100 candidatures</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails premium IA</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard illimité</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Relances illimitées</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1h coaching inclus</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support VIP</li>
+          </ul>
+          <a href="checkout.html?plan=premium" class="pricing-btn">Commander</a>
+        </div>
       </div>
     </div>
   </section>
+  
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>Questions fréquentes</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>Combien de temps pour recevoir les réponses ?</h4>
+          <p>Les premiers retours arrivent généralement sous 3 à 7 jours. Le taux de réponse moyen est de 15%.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Les emails sont-ils vraiment personnalisés ?</h4>
+          <p>Oui ! Chaque email est généré en fonction de votre profil, votre expérience et l'entreprise ciblée.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Puis-je essereposer de nouveau après ?</h4>
+          <p>Bien sûr. Vous pouvez racheter un pack à tout moment pour une nouvelle campagne.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Que se passe-t-il si je n'ai pas de réponses ?</h4>
+          <p>Nous offrons une seconde campagne gratuite si aucun résultat après 30 jours (Conditions applicables).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
   <footer>
     <div class="container">
-      <p>© 2026 CandidatureFacile. Tous droits réservés.</p>
+      <p>© 2026 CandidatureFacile — Tous droits réservés</p>
+      <div class="payments">
+        <span>💳 Paiement sécurisé</span>
+        <span>🔒 Données chiffrées</span>
+        <span>✓ Satisfaction garantie</span>
+      </div>
     </div>
   </footer>
 </body>

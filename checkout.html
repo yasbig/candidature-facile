@@ -16,6 +16,21 @@
     .header h1 { font-family: 'Space Grotesk', sans-serif; font-size: 1.75rem; color: var(--secondary); margin-bottom: 8px; }
     .header p { color: #64748b; }
     .header a { color: var(--primary); text-decoration: none; font-size: 0.9rem; }
+    
+    /* PLAN SELECTION */
+    .plan-selector { margin-bottom: 24px; }
+    .plan-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
+    .plan-option { padding: 16px 12px; border: 2px solid var(--border); border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.2s; }
+    .plan-option:hover { border-color: var(--primary-light); }
+    .plan-option.selected { border-color: var(--primary); background: #eff6ff; }
+    .plan-option .name { font-weight: 600; font-size: 0.9rem; }
+    .plan-option .price { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--secondary); }
+    .plan-option .desc { font-size: 0.75rem; color: var(--text-light); margin-top: 4px; }
+    
+    .plan-option.test .price { color: var(--text-light); }
+    .plan-option.complet .price { color: var(--primary); }
+    .plan-option.premium .price { color: #7c3aed; }
+    
     .card { background: var(--white); border-radius: 16px; padding: 24px; border: 1px solid var(--border); margin-bottom: 24px; }
     .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; color: var(--secondary); }
     .form-group { margin-bottom: 20px; }
@@ -41,9 +56,11 @@
     .file-item svg { width: 24px; height: 24px; color: var(--success); }
     .file-item .name { flex: 1; font-size: 0.9rem; }
     .file-item .remove { color: var(--error); cursor: pointer; font-size: 0.85rem; }
+    
     .summary { background: var(--bg); border-radius: 12px; padding: 20px; margin-bottom: 24px; }
     .summary .row { display: flex; justify-content: space-between; padding: 8px 0; }
     .summary .row.total { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 16px; font-weight: 600; font-size: 1.125rem; }
+    
     .btn { width: 100%; background: var(--primary); color: var(--white); padding: 16px; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; }
     .btn:hover { background: var(--primary-dark); }
     .btn:disabled { opacity: 0.6; cursor: not-allowed; }
@@ -52,13 +69,20 @@
     .error-msg { background: #fef2f2; color: var(--error); padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.9rem; display: none; }
     .error-msg.show { display: block; }
     .section-divider { height: 1px; background: var(--border); margin: 24px 0; }
+    
+    /* TRUST BADGES */
+    .trust-badges { display: flex; justify-content: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
+    .trust-badge { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-light); }
+    .trust-badge svg { width: 16px; height: 16px; color: var(--success); }
+    
     .success-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
     .success-modal.show { display: flex; }
     .success-content { background: var(--white); border-radius: 16px; padding: 40px; text-align: center; max-width: 400px; }
     .success-content svg { width: 64px; height: 64px; color: var(--success); margin-bottom: 16px; }
     .success-content h2 { font-size: 1.5rem; margin-bottom: 8px; }
     .success-content p { color: #64748b; margin-bottom: 24px; }
-    @media (max-width: 640px) { .checkbox-group { flex-direction: column; } .checkbox-item { width: 100%; } }
+    
+    @media (max-width: 640px) { .plan-options { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -68,6 +92,29 @@
       <h1>Commençons votre campagne</h1>
       <p>Répondez à quelques questions pour cibler vos candidatures</p>
     </div>
+    
+    <!-- PLAN SELECTOR -->
+    <div class="plan-selector">
+      <label style="font-weight: 500; font-size: 0.9rem;">Choisissez votre pack *</label>
+      <div class="plan-options">
+        <div class="plan-option test" data-plan="test" data-price="9">
+          <div class="name">Test</div>
+          <div class="price">9€</div>
+          <div class="desc">10 candidats</div>
+        </div>
+        <div class="plan-option complet selected" data-plan="complet" data-price="29">
+          <div class="name">Complet</div>
+          <div class="price">29€</div>
+          <div class="desc">50 candidats</div>
+        </div>
+        <div class="plan-option premium" data-plan="premium" data-price="49">
+          <div class="name">Premium</div>
+          <div class="price">49€</div>
+          <div class="desc">100 candidats</div>
+        </div>
+      </div>
+    </div>
+    
     <div class="error-msg" id="errorMsg"></div>
     <form id="checkoutForm">
       <!-- QUESTIONNAIRE -->
@@ -188,16 +235,23 @@
       
       <!-- RÉSUMÉ -->
       <div class="summary">
-        <div class="row"><span>Pack Candidature (50 entreprises)</span><span>29€</span></div>
+        <div class="row"><span>Pack sélectionné</span><span id="planName">Complet</span></div>
         <div class="row"><span>Cible personnalisée</span><span>Inclus</span></div>
         <div class="row"><span>Dashboard de suivi</span><span>Inclus</span></div>
-        <div class="row total"><span>Total</span><span>29€</span></div>
+        <div class="row total"><span>Total</span><span id="totalPrice">29€</span></div>
       </div>
       
-      <button type="submit" class="btn" id="submitBtn">Payer 29€ et lancer les candidatures</button>
+      <button type="submit" class="btn" id="submitBtn">Payer <span id="btnPrice">29€</span> et lancer les candidatures</button>
+      
       <div class="secure">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
         Paiement sécurisé par Stripe
+      </div>
+      
+      <div class="trust-badges">
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>SSL sécurisé</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Sans engagement</div>
+        <div class="trust-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Garantie satisfait ou remboursé</div>
       </div>
     </form>
   </div>
@@ -213,6 +267,40 @@
   </div>
   
   <script>
+    // Plan selection
+    let selectedPlan = 'complet';
+    let selectedPrice = 29;
+    const planNames = { test: 'Test', complet: 'Complet', premium: 'Premium' };
+    const planPrices = { test: 9, complet: 29, premium: 49 };
+    
+    // Check URL for plan
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlPlan = urlParams.get('plan');
+    if (urlPlan && planPrices[urlPlan]) {
+      selectedPlan = urlPlan;
+      selectedPrice = planPrices[urlPlan];
+    }
+    
+    function updatePrice() {
+      document.getElementById('planName').textContent = planNames[selectedPlan];
+      document.getElementById('totalPrice').textContent = selectedPrice + '€';
+      document.getElementById('btnPrice').textContent = selectedPrice + '€';
+      
+      document.querySelectorAll('.plan-option').forEach(opt => {
+        opt.classList.toggle('selected', opt.dataset.plan === selectedPlan);
+      });
+    }
+    
+    document.querySelectorAll('.plan-option').forEach(opt => {
+      opt.addEventListener('click', function() {
+        selectedPlan = this.dataset.plan;
+        selectedPrice = parseInt(this.dataset.price);
+        updatePrice();
+      });
+    });
+    
+    updatePrice();
+    
     // Checkbox styling
     document.querySelectorAll('.checkbox-item input').forEach(input => {
       input.addEventListener('change', function() {
@@ -253,8 +341,6 @@
       const cv = document.getElementById('cvInput').files[0];
       const poste = document.getElementById('poste').value;
       const experience = document.getElementById('experience').value;
-      
-      // Validate checkboxes
       const etablissements = document.querySelectorAll('input[name="etablissement"]:checked');
       
       if (!email || !cv || !poste || !experience || etablissements.length === 0) {
@@ -266,8 +352,9 @@
       btn.disabled = true;
       btn.textContent = 'Traitement en cours...';
       
-      // Collect form data
       const formData = {
+        plan: selectedPlan,
+        price: selectedPrice,
         email, phone: document.getElementById('phone').value,
         nom: document.getElementById('nom').value,
         poste, experience,
@@ -279,7 +366,6 @@
       
       console.log('Form data:', formData);
       
-      // Simulate payment - in production, this would call Stripe
       setTimeout(() => {
         document.getElementById('successModal').classList.add('show');
       }, 1500);
