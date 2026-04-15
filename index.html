@@ -21,14 +21,9 @@
     nav a:hover { color: var(--primary); }
     nav a.cta { background: var(--primary); color: var(--white); padding: 10px 20px; border-radius: 8px; margin-left: 16px; }
     .hero { padding: 80px 0 60px; text-align: center; background: linear-gradient(180deg, var(--white) 0%, var(--bg) 100%); }
-    .hero-badge { display: inline-block; background: #dbeafe; color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 0.875rem; font-weight: 500; margin-bottom: 24px; }
     .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; color: var(--secondary); line-height: 1.1; margin-bottom: 20px; }
     .hero h1 span { color: var(--primary); }
     .hero p { font-size: 1.125rem; color: var(--text-light); max-width: 640px; margin: 0 auto 32px; }
-    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-bottom: 32px; }
-    .hero-stat { text-align: center; }
-    .hero-stat .value { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--secondary); }
-    .hero-stat .label { font-size: 0.85rem; color: var(--text-light); }
     .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--white); padding: 16px 32px; border-radius: 12px; font-size: 1.125rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
     .hero-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
     
@@ -40,17 +35,6 @@
     .trust-icon svg { width: 24px; height: 24px; color: var(--success); }
     .trust-item h4 { font-size: 0.95rem; color: var(--secondary); }
     .trust-item p { font-size: 0.8rem; color: var(--text-light); }
-    
-    /* TESTIMONIALS */
-    .testimonials { padding: 80px 0; background: var(--white); }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .testimonial-card { background: var(--bg); padding: 24px; border-radius: 16px; border: 1px solid var(--border); }
-    .testimonial-card .stars { color: var(--warning); margin-bottom: 12px; }
-    .testimonial-card p { font-size: 0.95rem; margin-bottom: 16px; line-height: 1.6; }
-    .testimonial-card .author { display: flex; align-items: center; gap: 12px; }
-    .testimonial-card .avatar { width: 40px; height: 40px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 600; font-size: 0.9rem; }
-    .testimonial-card .name { font-weight: 500; font-size: 0.9rem; }
-    .testimonial-card .role { font-size: 0.8rem; color: var(--text-light); }
     
     /* HOW IT WORKS */
     .steps { padding: 80px 0; background: var(--bg); }
@@ -93,13 +77,12 @@
     /* FOOTER */
     footer { background: var(--secondary); color: #94a3b8; padding: 48px 0; text-align: center; }
     footer a { color: var(--white); text-decoration: none; }
-    footer .payments { display: flex; justify-content: center; gap: 16px; margin-top: 16px; }
+    footer .payments { display: flex; justify-content: center; gap: 16px; margin-top: 16px; flex-wrap: wrap; }
     footer .payments span { background: rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; }
     
     @media (max-width: 768px) {
       .hero h1 { font-size: 2rem; }
-      .hero-stats { flex-direction: column; gap: 24px; }
-      .trust-grid, .testimonials-grid, .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .trust-grid, .steps-grid, .pricing-grid { grid-template-columns: 1fr; }
       .pricing-card.featured { transform: none; }
     }
   </style>
@@ -118,25 +101,8 @@
   
   <section class="hero">
     <div class="container">
-      <span class="hero-badge">🚀 +500 Candidatures envoyées ce mois</span>
       <h1>Vos candidatures spontanées,<br><span>automatisées</span></h1>
-      <p>Téléchargez votre CV. Notre IA génère des emails personnalisés et les envoie à des centaines d'entreprises qui correspondent à votre profil.</p>
-      
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="value">500+</div>
-          <div class="label">Candidatures ce mois</div>
-        </div>
-        <div class="hero-stat">
-          <div class="value">15%</div>
-          <div class="label">Taux de réponse moyen</div>
-        </div>
-        <div class="hero-stat">
-          <div class="value">4.8/5</div>
-          <div class="label">Note de nos utilisateurs</div>
-        </div>
-      </div>
-      
+      <p>Téléchargez votre CV. Nous générons des emails personnalisés et les envoyons à des entreprises qui correspondent à votre profil.</p>
       <a href="checkout.html" class="hero-cta">Commencer maintenant →</a>
     </div>
   </section>
@@ -151,51 +117,15 @@
         </div>
         <div class="trust-item">
           <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-          <div><h4>50 entreprises réelles</h4><p>Emails vérifiés & ciblés</p></div>
+          <div><h4>Entreprises ciblées</h4><p>Emailing adapté à votre profil</p></div>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-          <div><h4>Envoi en 24-48h</h4><p>Résultats rapides</p></div>
+          <div><h4>Envoi rapide</h4><p>Vos candidature en 24-48h</p></div>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-          <div><h4>Support réactif</h4><p>Réponse sous 24h</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <h2>Ils nous font confiance</h2>
-        <p>Des centaines de candidats nous font confiance chaque mois</p>
-      </div>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"J'ai reçu 3 réponses en une semaine après des mois de поиск. Le temps économisé est énorme."</p>
-          <div class="author">
-            <div class="avatar">M</div>
-            <div><div class="name">Mathieu S.</div><div class="role">Ancien commercial → Cuisine</div></div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"Finally un service qui fonctionne vraiment. Les emails sont personnalisés, pas du copier-coller."</p>
-          <div class="author">
-            <div class="avatar">S</div>
-            <div><div class="name">Sarah L.</div><div class="role">Recherche'emploi</div></div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="stars">★★★★★</div>
-          <p>"Passé de 0 entretiens à 4 en 2 semaines. Je recommande fortement."</p>
-          <div class="author">
-            <div class="avatar">A</div>
-            <div><div class="name">Amine B.</div><div class="role">Chef de partie</div></div>
-          </div>
+          <div><h4>Support</h4><p>Réponse sous 24h</p></div>
         </div>
       </div>
     </div>
@@ -216,13 +146,13 @@
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <h3>Notre IA génère vos emails</h3>
+          <h3>Nous générons vos emails</h3>
           <p>Chaque email est personnalisé selon votre profil et l'entreprise ciblée.</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
           <h3>Suivez vos réponses</h3>
-          <p>Accédez à votre dashboard et recevez les réponses directement dans votre boîte mail.</p>
+          <p>Accédez à votre dashboard et recevez les réponses dans votre boîte mail.</p>
         </div>
       </div>
     </div>
@@ -243,24 +173,22 @@
           <ul class="pricing-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>10 candidatures</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails personnalisés</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard basique</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support email</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard</li>
           </ul>
           <a href="checkout.html?plan=test" class="pricing-btn">Essayer</a>
         </div>
         
         <div class="pricing-card featured">
           <div class="badge">PLUS POPULAIRE</div>
-          <h3>Pack Complet</h3>
+          <h3>Complet</h3>
           <div class="price">29<span>€</span></div>
-          <p class="desc">Pour une recherche active d'emploi</p>
+          <p class="desc">Pour une recherche active</p>
           <ul class="pricing-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>50 candidatures</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails personnalisés</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard complet</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Suivi des réponses</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Relance automatique</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support prioritaire</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support email</li>
           </ul>
           <a href="checkout.html?plan=complet" class="pricing-btn">Commander</a>
         </div>
@@ -271,11 +199,10 @@
           <p class="desc">Pour maximiser vos chances</p>
           <ul class="pricing-features">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>100 candidatures</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails premium IA</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails premium</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard illimité</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Relances illimitées</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>1h coaching inclus</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support VIP</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Relances</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support prioritaire</li>
           </ul>
           <a href="checkout.html?plan=premium" class="pricing-btn">Commander</a>
         </div>
@@ -292,19 +219,19 @@
       <div class="faq-grid">
         <div class="faq-item">
           <h4>Combien de temps pour recevoir les réponses ?</h4>
-          <p>Les premiers retours arrivent généralement sous 3 à 7 jours. Le taux de réponse moyen est de 15%.</p>
+          <p>Cela dépend du marché et de votre profil. En général, les premiers retours arrivent sous 5 à 15 jours.</p>
         </div>
         <div class="faq-item">
           <h4>Les emails sont-ils vraiment personnalisés ?</h4>
-          <p>Oui ! Chaque email est généré en fonction de votre profil, votre expérience et l'entreprise ciblée.</p>
+          <p>Oui. Chaque email est adapté à votre profil, votre expérience et l'entreprise ciblée.</p>
         </div>
         <div class="faq-item">
-          <h4>Puis-je essereposer de nouveau après ?</h4>
-          <p>Bien sûr. Vous pouvez racheter un pack à tout moment pour une nouvelle campagne.</p>
+          <h4>Puis-je réutiliser le service après ?</h4>
+          <p>Oui. Vous pouvez racheter un pack à tout moment pour une nouvelle campagne.</p>
         </div>
         <div class="faq-item">
-          <h4>Que se passe-t-il si je n'ai pas de réponses ?</h4>
-          <p>Nous offrons une seconde campagne gratuite si aucun résultat après 30 jours (Conditions applicables).</p>
+          <h4>Quelle est votre politique de remboursement ?</h4>
+          <p>Si aucune candidature n'a été envoyée, nous vous remboursons intégralement sous 14 jours.</p>
         </div>
       </div>
     </div>
@@ -316,7 +243,6 @@
       <div class="payments">
         <span>💳 Paiement sécurisé</span>
         <span>🔒 Données chiffrées</span>
-        <span>✓ Satisfaction garantie</span>
       </div>
     </div>
   </footer>
