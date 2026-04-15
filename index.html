@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CandidatureFacile — Vos candidatures spontanées automatisées</title>
+  <meta name="description" content="Envoyez des candidatures spontanées personnalisées à des centaines d'entreprises. Upload CV, on s'occupe du reste.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #2563eb; --primary-dark: #1d4ed8; --secondary: #0f172a; --text: #334155; --bg: #f8fafc; --white: #ffffff; --border: #e2e8f0; --success: #22c55e; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    header { background: var(--white); border-bottom: 1px solid var(--border); padding: 16px 0; position: sticky; top: 0; z-index: 100; }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--secondary); text-decoration: none; }
+    .logo span { color: var(--primary); }
+    nav a { color: var(--text); text-decoration: none; margin-left: 24px; font-weight: 500; font-size: 0.95rem; }
+    nav a:hover { color: var(--primary); }
+    nav a.cta { background: var(--primary); color: var(--white); padding: 10px 20px; border-radius: 8px; margin-left: 16px; }
+    .hero { padding: 80px 0 60px; text-align: center; }
+    .hero-badge { display: inline-block; background: #dbeafe; color: var(--primary); padding: 6px 16px; border-radius: 20px; font-size: 0.875rem; font-weight: 500; margin-bottom: 24px; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--secondary); line-height: 1.1; margin-bottom: 20px; }
+    .hero h1 span { color: var(--primary); }
+    .hero p { font-size: 1.25rem; color: #64748b; max-width: 600px; margin: 0 auto 40px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: var(--white); padding: 16px 32px; border-radius: 12px; font-size: 1.125rem; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .hero-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .steps { padding: 80px 0; background: var(--white); }
+    .section-header { text-align: center; margin-bottom: 48px; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; color: var(--secondary); margin-bottom: 12px; }
+    .section-header p { color: #64748b; font-size: 1.125rem; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .step-card { background: var(--bg); padding: 32px; border-radius: 16px; text-align: center; transition: transform 0.2s; }
+    .step-card:hover { transform: translateY(-4px); }
+    .step-number { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--primary); color: var(--white); border-radius: 50%; font-weight: 700; font-size: 1.25rem; margin-bottom: 20px; }
+    .step-card h3 { font-size: 1.25rem; margin-bottom: 8px; color: var(--secondary); }
+    .step-card p { color: #64748b; font-size: 0.95rem; }
+    .features { padding: 80px 0; }
+    .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 16px; background: var(--white); padding: 24px; border-radius: 12px; border: 1px solid var(--border); }
+    .feature-icon { flex-shrink: 0; width: 40px; height: 40px; background: #dcfce7; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+    .feature-icon svg { width: 20px; height: 20px; color: var(--success); }
+    .feature-item h3 { font-size: 1rem; color: var(--secondary); margin-bottom: 4px; }
+    .feature-item p { font-size: 0.9rem; color: #64748b; }
+    .pricing { padding: 80px 0; background: var(--white); }
+    .pricing-card { max-width: 480px; margin: 0 auto; background: var(--bg); border-radius: 24px; padding: 40px; text-align: center; border: 2px solid var(--primary); }
+    .pricing-card h3 { font-size: 1.5rem; color: var(--secondary); margin-bottom: 8px; }
+    .pricing-card .price { font-family: 'Space Grotesk', sans-serif; font-size: 3.5rem; font-weight: 700; color: var(--primary); }
+    .pricing-card .price span { font-size: 1rem; font-weight: 400; color: #64748b; }
+    .pricing-card .description { color: #64748b; margin-bottom: 32px; }
+    .pricing-features { text-align: left; margin-bottom: 32px; }
+    .pricing-features li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); list-style: none; }
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-features svg { width: 20px; height: 20px; color: var(--success); }
+    .pricing-btn { display: block; width: 100%; background: var(--primary); color: var(--white); padding: 16px; border-radius: 12px; font-size: 1.125rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+    .pricing-btn:hover { background: var(--primary-dark); }
+    footer { background: var(--secondary); color: #94a3b8; padding: 48px 0; text-align: center; }
+    footer a { color: var(--white); text-decoration: none; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.25rem; }
+      .steps-grid, .features-grid { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a href="#" class="logo">Candidature<span>Facile</span></a>
+      <nav>
+        <a href="#fonctionnement">Comment ça marche</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="checkout.html" class="cta">Commencer</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="container">
+      <span class="hero-badge">🚀 Nouveau service</span>
+      <h1>Vos candidatures spontanées,<br><span>automatisées</span></h1>
+      <p>Téléchargez votre CV et votre lettre de motivation. Nous générons des emails personnalisés et les envoyons à des centaines d'entreprises ciblées.</p>
+      <a href="checkout.html" class="hero-cta">Commencer maintenant →</a>
+    </div>
+  </section>
+  <section class="steps" id="fonctionnement">
+    <div class="container">
+      <div class="section-header">
+        <h2>Comment ça marche</h2>
+        <p>3 étapes simples pour multiplier vos chances</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Téléchargez vos documents</h3>
+          <p>Upload votre CV et lettre de motivation. Notre IA analyse votre profil et vos compétences.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>On génère les candidatures</h3>
+          <p>Nous créons des emails personnalisés pour chaque entreprise ciblée, adaptés à votre profil.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Envoi automatique</h3>
+          <p>Vos candidatures sont envoyées automatiquement. Vous recevez les réponses directement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Pourquoi nous choisir</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h3>Gain de temps considérable</h3><p>Plus besoin d'écrire chaque candidature manuellement.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h3>Emails personnalisés</h3><p>Chaque email est unique et adapté à l'entreprise destinataire.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h3>50 entreprises ciblées</h3><p>Nous envoyons vos candidatures aux entreprises qui correspondent à votre profil.</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div><h3>Suivi des réponses</h3><p>Dashboard pour suivre l'avancement de vos candidatures.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="pricing" id="tarifs">
+    <div class="container">
+      <div class="section-header">
+        <h2>Tarifs simples</h2>
+        <p>Pas de frais cachés, pas d'abonnement</p>
+      </div>
+      <div class="pricing-card">
+        <h3>Pack Candidature</h3>
+        <div class="price">29<span>€</span></div>
+        <p class="description">Une seule fois, pas d'abonnement</p>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Upload CV + lettre de motivation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>50 candidatures personnalisées</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Emails adaptés à votre profil</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Dashboard de suivi</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support par email</li>
+        </ul>
+        <a href="checkout.html" class="pricing-btn">Commander maintenant</a>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <p>© 2026 CandidatureFacile. Tous droits réservés.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+[
+  {"name": "Le Restaurant du Coin", "email": "contact@restaurantducoin.fr", "address": "15 Rue de la Fontaine au Roi, 75010 Paris", "sector": "restaurant"},
+  {"name": "Boulangerie Artisanale du 11e", "email": "contact@boulangerie11.fr", "address": "42 Rue de la Roquette, 75011 Paris", "sector": "boulangerie"},
+  {"name": "Épicerie Fine du 10e", "email": "bonjour@epiceriefine10.fr", "address": "28 Rue de Marseille, 75010 Paris", "sector": "epicerie"},
+  {"name": "Traiteur Oriental Paris", "email": "info@traiteuroriental.fr", "address": "55 Rue de Belleville, 75019 Paris", "sector": "traiteur"},
+  {"name": "Chez Maurice", "email": "contact@chezmaurice.fr", "address": "34 Rue Vignon, 75009 Paris", "sector": "restaurant"},
+  {"name": "La Table de Paris", "email": "hello@latabledeparis.fr", "address": "12 Rue du Faubourg Saint-Honoré, 75002 Paris", "sector": "restaurant"},
+  {"name": "Le Panier Bio", "email": "contact@lepanierbio.fr", "address": "8 Avenue de Saint-Mandé, 75012 Paris", "sector": "epicerie"},
+  {"name": "Maison du Pain", "email": "info@maison-du-pain.fr", "address": "23 Rue de Turenne, 75003 Paris", "sector": "boulangerie"},
+  {"name": "Saveurs du Monde", "email": "contact@saveursdumonde.fr", "address": "67 Boulevard de la Chapelle, 75018 Paris", "sector": "restaurant"},
+  {"name": "Le Jardin Gourmand", "email": "bonjour@lejardingourmand.fr", "address": "45 Rue de la Convention, 75015 Paris", "sector": "restaurant"},
+  {"name": "L'Assiette de Paris", "email": "contact@assiettedeparis.fr", "address": "19 Rue Oberkampf, 75011 Paris", "sector": "restaurant"},
+  {"name": "Boulangerie Les Délices", "email": "contact@delices-boulangerie.fr", "address": "33 Rue Réaumur, 75002 Paris", "sector": "boulangerie"},
+  {"name": "Le Comptoir Bio", "email": "bonjour@comptoirbio.fr", "address": "56 Rue de la Folie Méricourt, 75011 Paris", "sector": "epicerie"},
+  {"name": "Cuisine & Co", "email": "contact@cuisineetco.fr", "address": "78 Rue de la République, 75002 Paris", "sector": "restaurant"},
+  {"name": "La Petite Crèmerie", "email": "hello@petitecremerie.fr", "address": "14 Rue de la Butte aux Cailles, 75013 Paris", "sector": "epicerie"},
+  {"name": "Pâtisserie Fine", "email": "info@patisseriefine.fr", "address": "29 Rue du Faubourg Saint-Antoine, 75012 Paris", "sector": "patisserie"},
+  {"name": "Le Petit Marché", "email": "contact@petitmarche.fr", "address": "6 Rue des Rosiers, 75004 Paris", "sector": "epicerie"},
+  {"name": "Restaurant Le 10", "email": "bonjour@restaurant-le10.fr", "address": "10 Rue du Château d'Eau, 75010 Paris", "sector": "restaurant"},
+  {"name": "Boulangerie Moderne", "email": "contact@boulangeriemoderne.fr", "address": "52 Rue de la Victoire, 75009 Paris", "sector": "boulangerie"},
+  {"name": "Épicerie du Canal", "email": "hello@epicerieducanal.fr", "address": "41 Quai de la Loire, 75019 Paris", "sector": "epicerie"}
+]
